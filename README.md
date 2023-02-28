@@ -47,3 +47,6 @@ recipe_scraper:
   
   * Log menus to track used recipes and trends
   * Only consider recipes that are considered main_dishes or dinners (others?)
+  * Consider micronutrients in menu balance
+  * Let user define a custom balanced menu criteria
+  * Let user unblock recipes from blocked_recipes.csv
