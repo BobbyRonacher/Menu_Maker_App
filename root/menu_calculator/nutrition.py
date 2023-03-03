@@ -72,9 +72,13 @@ class Recipe:
                 df.to_csv(csv, index=False)
 
 def clean_up_recipes(df):
-    blocked_words = ['dessert','cookie','muffin','cookie','pie', 'cake', 'bread', 'fish']
-    blocked_df = df[df['title'].apply(lambda x: any([k in x.lower() for k in blocked_words]))]
-    block_recipe('cleaning up recipes', blocked_df)
+    # blocked_words = ['dessert','cookie','muffin','cookie','pie', 'cake', 'bread', 'fish']
+    approved_categories = ['dinner', 'main-dish', 'main dish', 'lunch', 'main course', 'unknown']
+    # blocked_df = df[df['title'].apply(lambda x: any([k in x.lower() for k in blocked_words]))]
+    blocked_df = df[df['category'].apply(lambda x: any([k in x.lower() for k in approved_categories])) == False]
+
+    # block_recipe('cleaning up recipes ', blocked_df)
+    block_recipe('non-dinner recipes', blocked_df)
 
 def block_recipe(title, recipe: pd.DataFrame, user_name='master'):
     script_dir = os.path.dirname(__file__)

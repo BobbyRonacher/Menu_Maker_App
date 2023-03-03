@@ -36,7 +36,7 @@ def read_csv(user_name='master'):
     # merge two DataFrames and create indicator column
     df_all = recipe_df.merge(block_df.drop_duplicates(),
                              on=['calories', 'carbs', 'fat', 'nutrition', 'protein', 'rating', 'reviewCount', 'source',
-                                 'title', 'url'],
+                                 'title', 'url', 'category'],
                              how='left', indicator=True)
 
     # create DataFrame with rows that exist in first DataFrame only

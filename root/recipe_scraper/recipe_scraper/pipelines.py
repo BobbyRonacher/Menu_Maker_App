@@ -22,7 +22,7 @@ class CheckItemPipeline:
         if not recipe['nutrition']:
             raise DropItem('Missing nutrition!')
         if not recipe['category']:
-            recipe['category'] = ''
+            recipe['category'] = 'unknown'
         return recipe
 
 
