@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="">
+    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="Checking for dinner categories and blocking recipes without category like dinner, main dish, or lunch, or unknown.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/spiders/master_blocked_recipes.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/spiders/recipes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/spiders/recipes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/menu_calculator/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +79,21 @@
       <option name="project" value="LOCAL" />
       <updated>1677541836602</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="adding scrapy to requirements.txt">
+      <created>1677712506503</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677712506503</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Checking for dinner categories and blocking recipes without category like dinner, main dish, or lunch, or unknown.">
+      <created>1677883644880</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677883644880</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,12 +106,15 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="recipe scraper scripts" />
     <MESSAGE value="menu maker scripts" />
     <MESSAGE value="other files" />
-    <option name="LAST_COMMIT_MESSAGE" value="other files" />
+    <MESSAGE value="adding scrapy to requirements.txt" />
+    <MESSAGE value="Checking for dinner categories and blocking recipes without category like dinner, main dish, or lunch, or unknown." />
+    <option name="LAST_COMMIT_MESSAGE" value="Checking for dinner categories and blocking recipes without category like dinner, main dish, or lunch, or unknown." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

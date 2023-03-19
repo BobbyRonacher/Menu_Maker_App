@@ -3,6 +3,8 @@ import pandas as pd
 import menu_maker
 import nutrition as n
 import webbrowser
+from datetime import date
+from datetime import timedelta
 
 def make_new_recipes():
     global df, menu
@@ -113,6 +115,8 @@ def block_menu_recipe(title, df):
 def callback(url):
    webbrowser.open_new_tab(url)
 
+def save_menu():
+    menu.save_menu()
 
 window = tk.Tk()
 frame_main = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
@@ -311,7 +315,7 @@ label_nutrition = tk.Label(
 # Define a function to show the popup message
 
 button = tk.Button(
-    text="Click me!",
+    text="New Menu",
     master=frame_main,
     width=25,
     height=5,
@@ -319,8 +323,15 @@ button = tk.Button(
     fg="white",
     command=make_new_recipes
 )
-entry = tk.Entry(fg="yellow",
-    master=frame_main, bg="white")
+button_save_menu = tk.Button(
+    text="Save menu!",
+    master=frame_main,
+    width=25,
+    height=5,
+    bg="black",
+    fg="white",
+    command=lambda: save_menu()
+)
 label_title.grid(row=0, column=1, sticky='nesw')
 label_url_header.grid(row=0, column=4, sticky='nesw')
 
@@ -349,6 +360,7 @@ button_drop_recipe_4.grid(row=4, column=3)
 label_recipe_4_url.grid(row=4, column=4, sticky='nsew')
 
 label_nutrition.grid(row=5, column=1, columnspan=3, sticky='nsew')
+button_save_menu.grid(row=5, column=4, sticky='nsew')
 button.grid(row=5, column=0)
 # entry.grid(row=5, column=1, sticky= 'nesw')
 
