@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import *
 import pandas as pd
 import menu_maker
 import nutrition as n
@@ -21,10 +22,10 @@ def make_new_recipes():
     calories, carbs, fat, protein = menu.calories, menu.carbs, menu.fat, menu.protein,
     nutrition_text = f'calories: {calories}\ncarbs: {carbs}\nfat: {fat}\nprotein: {protein}'
 
-    label_recipe1_text.config(text=recipe_1)
-    label_recipe2_text.config(text=recipe_2)
-    label_recipe3_text.config(text=recipe_3)
-    label_recipe4_text.config(text=recipe_4)
+    button_recipe1_text.config(text=recipe_1)
+    button_recipe2_text.config(text=recipe_2)
+    button_recipe3_text.config(text=recipe_3)
+    button_recipe4_text.config(text=recipe_4)
     label_recipe_1_url.config(text=url_1)
     label_recipe_2_url.config(text=url_2)
     label_recipe_3_url.config(text=url_3)
@@ -34,7 +35,7 @@ def make_new_recipes():
     label_recipe_3_url.bind("<Button-1>", lambda e: callback(label_recipe_3_url.cget("text")))
     label_recipe_4_url.bind("<Button-1>", lambda e: callback(label_recipe_4_url.cget("text")))
 
-    label_nutrition.config(text=nutrition_text)
+    label_nutrition.config(text=nutrition_text, bg='white')
 
     if not menu.recipes_df.loc[0, 'keep']:
         button_keep_recipe_1.config(fg='white', bg='black')
@@ -112,6 +113,67 @@ def block_menu_recipe(title, df):
     button_submit.grid(row=4, column=0, sticky='ns')
     window.mainloop()
 
+
+def pick_recipe(df, menu, num):
+    if menu.recipes_df.iloc[num-1]['keep'] == True:
+        print("Can't replace a kept recipe")
+        return
+
+    def go(event):
+        cs = titlelist.curselection()
+        title = titlelist.get(cs)
+        new_recipe_df = df[df['title'] == title]
+        new_recipe_df['num'] = num - 1
+        new_recipe_df = new_recipe_df.set_index('num')
+        menu.recipes_df.update(new_recipe_df)
+        keep_recipe(menu, num)
+        if num == 1:
+            button_recipe1_text.config(text=menu.recipes_df.iloc[num-1]['title'])
+            label_recipe_1_url.config(text=menu.recipes_df.iloc[num-1]['url'])
+        elif num == 2:
+            button_recipe2_text.config(text=menu.recipes_df.iloc[num-1]['title'])
+            label_recipe_2_url.config(text=menu.recipes_df.iloc[num-1]['url'])
+        elif num == 3:
+            button_recipe3_text.config(text=menu.recipes_df.iloc[num-1]['title'])
+            label_recipe_3_url.config(text=menu.recipes_df.iloc[num-1]['url'])
+        else:
+            button_recipe4_text.config(text=menu.recipes_df.iloc[num-1]['title'])
+            label_recipe_4_url.config(text=menu.recipes_df.iloc[num-1]['url'])
+        menu.reset_nutrition()
+        menu.aggregate_nutrition()
+        menu.calculate_nutrition_percentages()
+        menu.check_is_balanced_menu()
+
+        if not menu.balanced:
+            label_nutrition.config(bg='yellow')
+        else:
+            label_nutrition.config(bg='white')
+
+        calories, carbs, fat, protein = menu.calories, menu.carbs, menu.fat, menu.protein,
+        nutrition_text = f'calories: {calories}\ncarbs: {carbs}\nfat: {fat}\nprotein: {protein}'
+        label_nutrition.config(text=nutrition_text)
+
+        window2.destroy()
+
+    window2 = tk.Tk()
+    frame_main = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
+    frame_main.pack()
+
+    scrollbar = Scrollbar(window2, orient='vertical')
+    scrollbar.pack(side=RIGHT, fill=Y)
+
+    titlelist = Listbox(window2, yscrollcommand=scrollbar.set)
+    for title in df['title']:
+        titlelist.insert(END, title)
+        titlelist.bind('<Double-1>', go)
+
+
+    titlelist.pack(side = LEFT, fill = BOTH)
+    scrollbar.config( command=titlelist.yview)
+    window2.mainloop()
+
+
+
 def callback(url):
    webbrowser.open_new_tab(url)
 
@@ -125,7 +187,7 @@ frame_main.pack()
 label_title = tk.Label(
     text="Recipes",
     master=frame_main,
-    font= ('Helvetica 15 underline'),
+    font='Helvetica 15 underline',
     fg="black",  # Set the text color
     bg="white",  # Set the background color
     width=10,  # set the width
@@ -134,7 +196,7 @@ label_title = tk.Label(
 label_url_header = tk.Label(
     text="URLs",
     master=frame_main,
-    font= ('Helvetica 15 underline'),
+    font='Helvetica 15 underline',
     fg="black",  # Set the text color
     bg="white",  # Set the background color
 )
@@ -147,20 +209,6 @@ label_recipe1 = tk.Label(
 #    width=10,  # set the width
     height=1  # set the height
 )
-label_recipe1_text = tk.Label(
-    text='',
-    master=frame_main,
-    fg="black",  # Set the text color
-    bg="white",  # Set the background color
-    height=1  # set the height
-)
-label_recipe_1_url = tk.Label(
-    text='',
-    master=frame_main,
-    fg="black",  # Set the text color
-    bg="white",  # Set the background color
-    height=1  # set the height
-)
 label_recipe2 = tk.Label(
     text="Recipe2:",
     master=frame_main,
@@ -169,7 +217,56 @@ label_recipe2 = tk.Label(
 #    width=10,  # set the width
     height=1  # set the height
 )
-label_recipe2_text = tk.Label(
+label_recipe3 = tk.Label(
+    text="Recipe3:",
+    master=frame_main,
+    fg="black",  # Set the text color
+    bg="white",  # Set the background color
+    height=1  # set the height
+)
+label_recipe4 = tk.Label(
+    text="Recipe4:",
+    master=frame_main,
+    fg="black",  # Set the text color
+    bg="white",  # Set the background color
+    height=1  # set the height
+)
+
+button_recipe1_text = tk.Button(
+    text='',
+    master=frame_main,
+    fg="black",  # Set the text color
+    bg="white",  # Set the background color
+    height=1,  # set the height
+    command=lambda: pick_recipe(df, menu, 1)
+)
+button_recipe2_text = tk.Button(
+    text='',
+    master=frame_main,
+    fg="black",  # Set the text color
+    bg="white",  # Set the background color
+    height=1,  # set the height
+    command=lambda: pick_recipe(df, menu, 2)
+)
+button_recipe3_text = tk.Button(
+    text='',
+    master=frame_main,
+    fg="black",  # Set the text color
+    bg="white",  # Set the background color
+    height=1,  # set the height
+    command=lambda: pick_recipe(df, menu, 3)
+)
+button_recipe4_text = tk.Button(
+    text='',
+    master=frame_main,
+    fg="black",  # Set the text color
+    bg="white",  # Set the background color
+    height=1,  # set the height
+    command=lambda: pick_recipe(df, menu, 4)
+)
+
+
+label_recipe_1_url = tk.Label(
     text='',
     master=frame_main,
     fg="black",  # Set the text color
@@ -183,37 +280,7 @@ label_recipe_2_url = tk.Label(
     bg="white",  # Set the background color
     height=1  # set the height
 )
-label_recipe3 = tk.Label(
-    text="Recipe3:",
-    master=frame_main,
-    fg="black",  # Set the text color
-    bg="white",  # Set the background color
-#    width=10,  # set the width
-    height=1  # set the height
-)
-label_recipe3_text = tk.Label(
-    text='',
-    master=frame_main,
-    fg="black",  # Set the text color
-    bg="white",  # Set the background color
-    height=1  # set the height
-)
 label_recipe_3_url = tk.Label(
-    text='',
-    master=frame_main,
-    fg="black",  # Set the text color
-    bg="white",  # Set the background color
-    height=1  # set the height
-)
-label_recipe4 = tk.Label(
-    text="Recipe4:",
-    master=frame_main,
-    fg="black",  # Set the text color
-    bg="white",  # Set the background color
-#    width=10,  # set the width
-    height=1  # set the height
-)
-label_recipe4_text = tk.Label(
     text='',
     master=frame_main,
     fg="black",  # Set the text color
@@ -225,8 +292,9 @@ label_recipe_4_url = tk.Label(
     master=frame_main,
     fg="black",  # Set the text color
     bg="white",  # Set the background color
-    height=1  # set the height
+    height=1,  # set the height
 )
+
 button_keep_recipe_1 = tk.Button(
     text="Keep",
     master=frame_main,
@@ -271,7 +339,7 @@ button_drop_recipe_1 = tk.Button(
     height=1,
     bg="black",
     fg="red",
-    command=lambda: block_menu_recipe(label_recipe1_text.cget("text"), df)
+    command=lambda: block_menu_recipe(button_recipe1_text.cget("text"), df)
 )
 button_drop_recipe_2 = tk.Button(
     text="Drop",
@@ -280,7 +348,7 @@ button_drop_recipe_2 = tk.Button(
     height=1,
     bg="black",
     fg="red",
-    command=lambda: block_menu_recipe(label_recipe2_text.cget("text"), df)
+    command=lambda: block_menu_recipe(button_recipe2_text.cget("text"), df)
 )
 button_drop_recipe_3 = tk.Button(
     text="Drop",
@@ -289,7 +357,7 @@ button_drop_recipe_3 = tk.Button(
     height=1,
     bg="black",
     fg="red",
-    command=lambda: block_menu_recipe(label_recipe3_text.cget("text"), df)
+    command=lambda: block_menu_recipe(button_recipe3_text.cget("text"), df)
 )
 button_drop_recipe_4 = tk.Button(
     text="Drop",
@@ -298,7 +366,7 @@ button_drop_recipe_4 = tk.Button(
     height=1,
     bg="black",
     fg="red",
-    command=lambda: block_menu_recipe(label_recipe4_text.cget("text"), df)
+    command=lambda: block_menu_recipe(button_recipe4_text.cget("text"), df)
 )
 
 label_nutrition = tk.Label(
@@ -336,25 +404,25 @@ label_title.grid(row=0, column=1, sticky='nesw')
 label_url_header.grid(row=0, column=4, sticky='nesw')
 
 label_recipe1.grid(row=1, column=0, sticky='nsew')
-label_recipe1_text.grid(row=1, column=1, sticky='nsew')
+button_recipe1_text.grid(row=1, column=1, sticky='nsew')
 button_keep_recipe_1.grid(row=1, column=2)
 button_drop_recipe_1.grid(row=1, column=3)
 label_recipe_1_url.grid(row=1, column=4, sticky='nsew')
 
 label_recipe2.grid(row=2, column=0, sticky='nsew')
-label_recipe2_text.grid(row=2, column=1, sticky='nsew')
+button_recipe2_text.grid(row=2, column=1, sticky='nsew')
 button_keep_recipe_2.grid(row=2, column=2)
 button_drop_recipe_2.grid(row=2, column=3)
 label_recipe_2_url.grid(row=2, column=4, sticky='nsew')
 
 label_recipe3.grid(row=3, column=0, sticky='nsew')
-label_recipe3_text.grid(row=3, column=1, sticky='nsew')
+button_recipe3_text.grid(row=3, column=1, sticky='nsew')
 button_keep_recipe_3.grid(row=3, column=2)
 button_drop_recipe_3.grid(row=3, column=3)
 label_recipe_3_url.grid(row=3, column=4, sticky='nsew')
 
 label_recipe4.grid(row=4, column=0, sticky='nsew')
-label_recipe4_text.grid(row=4, column=1, sticky='nsew')
+button_recipe4_text.grid(row=4, column=1, sticky='nsew')
 button_keep_recipe_4.grid(row=4, column=2)
 button_drop_recipe_4.grid(row=4, column=3)
 label_recipe_4_url.grid(row=4, column=4, sticky='nsew')
@@ -382,3 +450,6 @@ window.mainloop()
 # sticky options:
     #n or N- top-center e or E right-center s or S bottom center w or W left center
     # can combine letters ex. ne or nw
+
+
+

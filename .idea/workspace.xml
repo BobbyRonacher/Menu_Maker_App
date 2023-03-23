@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="Checking for dinner categories and blocking recipes without category like dinner, main dish, or lunch, or unknown.">
+    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="Adding log recipes functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/menu_calculator/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +92,21 @@
       <option name="project" value="LOCAL" />
       <updated>1677883644880</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Adding gitignore to ignore csv files.">
+      <created>1679240729745</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679240729745</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Adding log recipes functionality">
+      <created>1679240860722</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679240860722</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,7 +127,9 @@
     <MESSAGE value="other files" />
     <MESSAGE value="adding scrapy to requirements.txt" />
     <MESSAGE value="Checking for dinner categories and blocking recipes without category like dinner, main dish, or lunch, or unknown." />
-    <option name="LAST_COMMIT_MESSAGE" value="Checking for dinner categories and blocking recipes without category like dinner, main dish, or lunch, or unknown." />
+    <MESSAGE value="Adding gitignore to ignore csv files." />
+    <MESSAGE value="Adding log recipes functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding log recipes functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
