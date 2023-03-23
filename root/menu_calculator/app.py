@@ -115,9 +115,29 @@ def block_menu_recipe(title, df):
 
 
 def pick_recipe(df, menu, num):
-    if menu.recipes_df.iloc[num-1]['keep'] == True:
+    if menu.recipes_df.iloc[num-1]['keep']:
         print("Can't replace a kept recipe")
         return
+
+    def cb_search(event):
+
+        sstr = search.get()
+        titlelist.delete(0, END)
+        # If filter removed show all data
+        if sstr == "":
+            print("sstr empty")
+            fill_listbox(df['title'])
+            return
+
+        filtered_data = list()
+        for item in df['title']:
+            if item.lower().find(sstr.lower()) >= 0:
+                filtered_data.append(item)
+        fill_listbox(filtered_data)
+
+    def fill_listbox(ld):
+        for item in ld:
+            titlelist.insert(END, item)
 
     def go(event):
         cs = titlelist.curselection()
@@ -156,6 +176,7 @@ def pick_recipe(df, menu, num):
         window2.destroy()
 
     window2 = tk.Tk()
+    window2.geometry("700x350")
     frame_main = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
     frame_main.pack()
 
@@ -167,15 +188,19 @@ def pick_recipe(df, menu, num):
         titlelist.insert(END, title)
         titlelist.bind('<Double-1>', go)
 
+    search_str = StringVar()
+    search = Entry(master=window2, textvariable=search_str, width=10)
+    search.bind('<Return>', cb_search)
 
-    titlelist.pack(side = LEFT, fill = BOTH)
-    scrollbar.config( command=titlelist.yview)
+    titlelist.pack(side=TOP, expand=True, fill=BOTH)
+    search.pack(side=BOTTOM, fill=X, ipady=5)
+    scrollbar.config(command=titlelist.yview)
     window2.mainloop()
 
 
 
 def callback(url):
-   webbrowser.open_new_tab(url)
+    webbrowser.open_new_tab(url)
 
 def save_menu():
     menu.save_menu()
