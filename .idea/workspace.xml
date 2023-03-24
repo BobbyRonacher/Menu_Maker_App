@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="Adding functionality for user to add their own recipes">
-      <change afterPath="$PROJECT_DIR$/root/menu_calculator/tkinter_Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/my_recipe_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/my_recipe_form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" afterDir="false" />
-    </list>
+    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="stashing optimizing my_recipe_form.py" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
