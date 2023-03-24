@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="Adding ability to select a custom recipe.&#10;Can only replace un-kept recipes.&#10;If the new menu is unbalanced, nutrition text will have a yellow background.&#10;Selected recipe will be marked as kept">
+    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/root/menu_calculator/my_recipe_form.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/menu_calculator/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +22,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
@@ -45,6 +56,7 @@
       <recent name="C:\Users\bobra\OneDrive\Documents\GitHub\Menu_Maker_App" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bobra\OneDrive\Documents\GitHub\Menu_Maker_App\root\recipe_scraper\recipe_scraper\spiders" />
       <recent name="C:\Users\bobra\OneDrive\Documents\GitHub\Menu_Maker_App\root" />
     </key>
   </component>
@@ -113,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679534818988</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="csv to track personal recipes">
+      <created>1679612816448</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1679612816448</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,17 +156,7 @@
     <MESSAGE value="Adding gitignore to ignore csv files." />
     <MESSAGE value="Adding log recipes functionality" />
     <MESSAGE value="Adding ability to select a custom recipe.&#10;Can only replace un-kept recipes.&#10;If the new menu is unbalanced, nutrition text will have a yellow background.&#10;Selected recipe will be marked as kept" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding ability to select a custom recipe.&#10;Can only replace un-kept recipes.&#10;If the new menu is unbalanced, nutrition text will have a yellow background.&#10;Selected recipe will be marked as kept" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/root/menu_calculator/menu_maker.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="csv to track personal recipes" />
+    <option name="LAST_COMMIT_MESSAGE" value="csv to track personal recipes" />
   </component>
 </project>

@@ -63,27 +63,28 @@ class Menu:
         # Only save the kept recipes
         save_menu_df = self.recipes_df[self.recipes_df['keep'] == True]
 
-# 1) Check that the number of kept recipes is greater than 0
+        # 1) Check that the number of kept recipes is greater than 0
         if len(save_menu_df) == 0:
             print("can't save an empty menu")
             return
         # Set a date column equal to the start date marking the Sunday the menu is applicable for.
         save_menu_df['date'] = start_of_week
         script_dir = os.path.dirname(__file__)
-        csv_path = os.path.join(script_dir,'recipe_log.csv')
+        csv_path = os.path.join(script_dir, 'recipe_log.csv')
 
         user_input = True
         tmp_df = pd.read_csv(csv_path)
 
-# 2) Check if the start_of_week is already in the csv
+        # 2) Check if the start_of_week is already in the csv
         if max(tmp_df['date'] == str(start_of_week)):
             # get user input to overwrite or pass
             print('check if user wants to overwrite this date')
             user_response = ''
             while user_response not in ('Y', 'N', 'y', 'n'):
                 # Do I want this to be a pop-up tkinter message box?
-                user_response = input('A menu exists for ' + start_of_week + ' already. Do you want to overwrite it? (Y/N): ')
-            if user_response in ('Y','y'):
+                user_response = input(
+                    'A menu exists for ' + start_of_week + ' already. Do you want to overwrite it? (Y/N): ')
+            if user_response in ('Y', 'y'):
                 print('user will overwrite the data')
                 tmp_df = tmp_df[tmp_df['date'] != start_of_week]
                 tmp_df = pd.concat(objs=(tmp_df, save_menu_df))
@@ -107,16 +108,16 @@ class Recipe:
     def __init__(self):
         pass
 
-    def add_to_my_recipes(self, df, user_name='master', csv='my_recipes.csv'):
-        # csv = user_name + '_' + csv
-        if 'calories' not in df \
-                or 'carbs' not in df \
-                or 'fat' not in df \
-                or 'protein' not in df \
-                or 'title' not in df \
-                or 'url' not in df:
-            return
+    def add_to_my_recipes(self, df, user_name='master'):
+        for column in ['title', 'url', 'category', 'source',
+                       'calories', 'carbs', 'fat', 'protein',
+                       'rating', 'reviewCount']:
+            if (df[column] == '')[0]:
+                print('missing ' + column)
+                return 'missing'
         else:
+            script_dir = os.path.dirname(__file__)
+            csv = os.path.join(script_dir, 'my_recipes.csv')
             try:
                 tmp_df = pd.read_csv(csv)
                 tmp_df = pd.concat(objs=(tmp_df, df))

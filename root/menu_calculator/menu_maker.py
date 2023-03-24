@@ -28,9 +28,10 @@ def read_csv(user_name='master'):
     script_dir = os.path.dirname(__file__)
     recipe_df_path = os.path.join(script_dir, '../recipe_scraper/recipe_scraper/spiders/recipes.csv')
     recipe_block_path = os.path.join(script_dir, '../recipe_scraper/recipe_scraper/spiders/master_blocked_recipes.csv')
-
+    my_recipe_df_path = os.path.join(script_dir, 'my_recipes.csv')
 
     recipe_df = pd.read_csv(recipe_df_path)
+
     nutrition.clean_up_recipes(recipe_df)
     block_df = pd.read_csv(recipe_block_path)
     # merge two DataFrames and create indicator column
@@ -44,6 +45,11 @@ def read_csv(user_name='master'):
     # Need to reset the index so when the index of blocked recipes comes up
     # as a random number it does not error
     unblock_recipe_df = unblock_recipe_df.drop('_merge', axis=1).reset_index()
+
+
+    my_recipe_df = pd.read_csv(my_recipe_df_path)
+    unblock_recipe_df = pd.concat(objs=(my_recipe_df, unblock_recipe_df))
+    unblock_recipe_df = unblock_recipe_df.reset_index(drop=True).drop(columns='index')
 
     # return a df that is rows from recipe_df that aren't in block_df
     return unblock_recipe_df
@@ -88,7 +94,6 @@ def get_menu_with_recipes(menu, df):
 
         # new one
         recipe_indexes = []
-
         while len(recipe_indexes) < recipes_needed - len(keep_df):
             rand_num = rand.randint(0, num_recipes - 1)
             if rand_num not in recipe_indexes:

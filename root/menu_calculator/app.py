@@ -4,6 +4,7 @@ import pandas as pd
 import menu_maker
 import nutrition as n
 import webbrowser
+import my_recipe_form
 from datetime import date
 from datetime import timedelta
 
@@ -80,6 +81,8 @@ def keep_recipe(menu, num):
             button_keep_recipe_4.config(fg='black', bg='blue')
     return menu
 
+def add_new_recipe():
+    my_recipe_form.main()
 
 def block_menu_recipe(title, df):
     def block_recipe(title, df):
@@ -425,41 +428,49 @@ button_save_menu = tk.Button(
     fg="white",
     command=lambda: save_menu()
 )
+button_add_recipe = tk.Button(
+    text="Add recipe",
+    master=frame_main,
+    width=25,
+    height=5,
+    bg="black",
+    fg="white",
+    command=lambda: add_new_recipe()
+)
+
 label_title.grid(row=0, column=1, sticky='nesw')
-label_url_header.grid(row=0, column=4, sticky='nesw')
+label_url_header.grid(row=0, column=4, columnspan=2, sticky='nesw')
 
 label_recipe1.grid(row=1, column=0, sticky='nsew')
 button_recipe1_text.grid(row=1, column=1, sticky='nsew')
 button_keep_recipe_1.grid(row=1, column=2)
 button_drop_recipe_1.grid(row=1, column=3)
-label_recipe_1_url.grid(row=1, column=4, sticky='nsew')
+label_recipe_1_url.grid(row=1, column=4, columnspan=2, sticky='nsew')
 
 label_recipe2.grid(row=2, column=0, sticky='nsew')
 button_recipe2_text.grid(row=2, column=1, sticky='nsew')
 button_keep_recipe_2.grid(row=2, column=2)
 button_drop_recipe_2.grid(row=2, column=3)
-label_recipe_2_url.grid(row=2, column=4, sticky='nsew')
+label_recipe_2_url.grid(row=2, column=4, columnspan=2, sticky='nsew')
 
 label_recipe3.grid(row=3, column=0, sticky='nsew')
 button_recipe3_text.grid(row=3, column=1, sticky='nsew')
 button_keep_recipe_3.grid(row=3, column=2)
 button_drop_recipe_3.grid(row=3, column=3)
-label_recipe_3_url.grid(row=3, column=4, sticky='nsew')
+label_recipe_3_url.grid(row=3, column=4, columnspan=2, sticky='nsew')
 
 label_recipe4.grid(row=4, column=0, sticky='nsew')
 button_recipe4_text.grid(row=4, column=1, sticky='nsew')
 button_keep_recipe_4.grid(row=4, column=2)
 button_drop_recipe_4.grid(row=4, column=3)
-label_recipe_4_url.grid(row=4, column=4, sticky='nsew')
+label_recipe_4_url.grid(row=4, column=4, columnspan=2, sticky='nsew')
 
 label_nutrition.grid(row=5, column=1, columnspan=3, sticky='nsew')
 button_save_menu.grid(row=5, column=4, sticky='nsew')
+button_add_recipe.grid(row=5, column=5, sticky='nsew')
 button.grid(row=5, column=0)
 # entry.grid(row=5, column=1, sticky= 'nesw')
 
-
-
-make_new_recipes()
 window.mainloop()
 
 
