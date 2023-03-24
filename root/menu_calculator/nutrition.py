@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 from datetime import date, timedelta
-
+import tkinter as tk
 
 class Menu:
     def __init__(self, calories=0, carbs=0, protein=0, fat=0, balanced=False):
@@ -107,6 +107,8 @@ class Menu:
 class Recipe:
     def __init__(self):
         pass
+
+
 
     def add_to_my_recipes(self, df, user_name='master'):
         for column in ['title', 'url', 'category', 'source',

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/root/menu_calculator/my_recipe_form.py" afterDir="false" />
+    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="Adding functionality for user to add their own recipes">
+      <change afterPath="$PROJECT_DIR$/root/menu_calculator/tkinter_Test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/menu_calculator/my_recipe_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/my_recipe_form.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679612816448</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Adding functionality for user to add their own recipes">
+      <created>1679674006222</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1679674006222</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,6 +163,7 @@
     <MESSAGE value="Adding log recipes functionality" />
     <MESSAGE value="Adding ability to select a custom recipe.&#10;Can only replace un-kept recipes.&#10;If the new menu is unbalanced, nutrition text will have a yellow background.&#10;Selected recipe will be marked as kept" />
     <MESSAGE value="csv to track personal recipes" />
-    <option name="LAST_COMMIT_MESSAGE" value="csv to track personal recipes" />
+    <MESSAGE value="Adding functionality for user to add their own recipes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding functionality for user to add their own recipes" />
   </component>
 </project>
