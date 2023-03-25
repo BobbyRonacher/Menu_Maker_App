@@ -1,7 +1,7 @@
 anaconda==0.0.1.1
 brotlipy==0.7.0
 certifi==2021.10.8
-conda==4.11.0
+conda==4.3.16
 numpy==1.21.5
 pycosat==0.6.3
 pywin32==302
