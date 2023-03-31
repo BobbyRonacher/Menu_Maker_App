@@ -47,9 +47,12 @@ def read_csv(user_name='master'):
     unblock_recipe_df = unblock_recipe_df.drop('_merge', axis=1).reset_index()
 
 
-    my_recipe_df = pd.read_csv(my_recipe_df_path)
-    unblock_recipe_df = pd.concat(objs=(my_recipe_df, unblock_recipe_df))
-    unblock_recipe_df = unblock_recipe_df.reset_index(drop=True).drop(columns='index')
+    try:
+        my_recipe_df = pd.read_csv(my_recipe_df_path)
+        unblock_recipe_df = pd.concat(objs=(my_recipe_df, unblock_recipe_df))
+        unblock_recipe_df = unblock_recipe_df.reset_index(drop=True).drop(columns='index')
+    except:
+        pass
 
     # return a df that is rows from recipe_df that aren't in block_df
     return unblock_recipe_df
