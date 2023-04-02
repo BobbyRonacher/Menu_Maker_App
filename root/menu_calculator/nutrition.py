@@ -73,34 +73,40 @@ class Menu:
         csv_path = os.path.join(script_dir, 'recipe_log.csv')
 
         user_input = True
-        tmp_df = pd.read_csv(csv_path)
 
-        # 2) Check if the start_of_week is already in the csv
-        if max(tmp_df['date'] == str(start_of_week)):
-            # get user input to overwrite or pass
-            print('check if user wants to overwrite this date')
-            user_response = ''
-            while user_response not in ('Y', 'N', 'y', 'n'):
-                # Do I want this to be a pop-up tkinter message box?
-                user_response = input(
-                    'A menu exists for ' + start_of_week + ' already. Do you want to overwrite it? (Y/N): ')
-            if user_response in ('Y', 'y'):
-                print('user will overwrite the data')
-                tmp_df = tmp_df[tmp_df['date'] != start_of_week]
-                tmp_df = pd.concat(objs=(tmp_df, save_menu_df))
-                tmp_df.to_csv(csv_path, index=False)
-                return
+        # If this is the first saved recipe, create the csv and close
+        try:
+            tmp_df = pd.read_csv(csv_path)
+
+            # 2) Check if the start_of_week is already in the csv
+            if max(tmp_df['date'] == str(start_of_week)):
+                # get user input to overwrite or pass
+                print('check if user wants to overwrite this date')
+                user_response = ''
+                while user_response not in ('Y', 'N', 'y', 'n'):
+                    # Do I want this to be a pop-up tkinter message box?
+                    user_response = input(
+                        'A menu exists for ' + start_of_week + ' already. Do you want to overwrite it? (Y/N): ')
+                if user_response in ('Y', 'y'):
+                    print('user will overwrite the data')
+                    tmp_df = tmp_df[tmp_df['date'] != start_of_week]
+                    tmp_df = pd.concat(objs=(tmp_df, save_menu_df))
+                    tmp_df.to_csv(csv_path, index=False)
+                    return
+                else:
+                    print('user will keep the old data')
+                    return
             else:
-                print('user will keep the old data')
-                return
-        else:
-            # start of week is not in the csv
-            try:
-                tmp_df = pd.concat(objs=(tmp_df, save_menu_df))
-                tmp_df.to_csv(csv_path, index=False)
-            except:
-                save_menu_df.to_csv(csv_path, index=False)
-                pass
+                # start of week is not in the csv
+                try:
+                    tmp_df = pd.concat(objs=(tmp_df, save_menu_df))
+                    tmp_df.to_csv(csv_path, index=False)
+                except:
+                    save_menu_df.to_csv(csv_path, index=False)
+                    pass
+
+        except:
+            save_menu_df.to_csv(csv_path, index=False)
         print('menu saved for', start_of_week)
 
 
