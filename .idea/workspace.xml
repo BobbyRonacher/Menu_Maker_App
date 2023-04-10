@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="stashing optimizing my_recipe_form.py">
-      <change beforePath="$PROJECT_DIR$/.idea/Menu_Maker_App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Menu_Maker_App.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/spiders/bbcgoodfood.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/pipelines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/spiders/recipes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/spiders/recipes.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,16 +50,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bobra/PycharmProjects/Menu_Maker_App&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/bobra/PycharmProjects/Menu_Maker_App/root/recipe_scraper/recipe_scraper/spiders",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bobra\PycharmProjects\Menu_Maker_App\root\recipe_scraper\recipe_scraper\spiders" />
       <recent name="C:\Users\bobra\OneDrive\Documents\GitHub\Menu_Maker_App" />
     </key>
     <key name="MoveFile.RECENT_KEYS">

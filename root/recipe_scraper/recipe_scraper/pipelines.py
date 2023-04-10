@@ -28,7 +28,7 @@ class CheckItemPipeline:
 
 class CheckReviewsAndRatings:
     def process_item(self, recipe, spider):
-        if recipe['source'] != 'hellofresh':
+        if recipe['source'] not in ['hellofresh', 'bbcgoodfood']:
             if recipe['rating'] < 5 and recipe['reviewCount'] < 10 \
                     or recipe['rating'] < 4.75 and recipe['reviewCount'] < 25 \
                     or recipe['rating'] < 4.5 and recipe['reviewCount'] < 40 \
@@ -47,7 +47,7 @@ class ParseOutputPipeline:
             recipe['protein'] = recipe['nutrition'][0].split(',')[1].replace('protein', '').replace('g', '').strip()
             recipe['carbs'] = recipe['nutrition'][0].split(',')[2].replace('carbohydrates', '').replace('g', '').strip()
             recipe['fat'] = recipe['nutrition'][0].split(',')[5].replace('fat', '').replace('g', '').strip()
-        if recipe['source'] in ('hellofresh', 'allrecipes', 'foodnetwork', 'taste_of_home'):
+        if recipe['source'] in ('hellofresh', 'allrecipes', 'foodnetwork', 'taste_of_home', 'bbcgoodfood'):
             recipe['calories'] = recipe['nutrition']['calories'].strip().split(' ')[0]
             recipe['protein'] = recipe['nutrition']['proteinContent'].strip().split(' ')[0].replace('g', '').strip()
             recipe['carbs'] = recipe['nutrition']['carbohydrateContent'].strip().split(' ')[0].replace('g', '').strip()
