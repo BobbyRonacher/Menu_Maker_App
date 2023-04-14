@@ -2,13 +2,36 @@ import pandas as pd
 import os
 from datetime import date, timedelta
 
-
-class Menu:
-    def __init__(self, calories=0, carbs=0, protein=0, fat=0, balanced=False):
+class Recipe:
+    def __init__(self, recipe_df, calories=0, carbs=0, protein=0, fat=0):
         self.calories = calories
         self.carbs = carbs
         self.protein = protein
         self.fat = fat
+        self.recipe_df = recipe_df
+        pass
+
+    def add_to_my_recipes(self, df, user_name='master'):
+        for column in ['title', 'url', 'category', 'source',
+                       'calories', 'carbs', 'fat', 'protein',
+                       'rating', 'reviewCount']:
+            if (df[column] == '')[0]:
+                print('missing ' + column)
+                return 'missing'
+        else:
+            script_dir = os.path.dirname(__file__)
+            csv = os.path.join(script_dir, 'my_recipes.csv')
+            try:
+                tmp_df = pd.read_csv(csv)
+                tmp_df = pd.concat(objs=(tmp_df, df))
+                tmp_df = tmp_df.drop_duplicates()
+                tmp_df.to_csv(csv, index=False)
+            except:
+                df.to_csv(csv, index=False)
+
+
+class Menu(Recipe):
+    def __init__(self, balanced=False):
         self.balanced = balanced
         self.carb_pct = 100
         self.protein_pct = 100
@@ -108,29 +131,6 @@ class Menu:
         except:
             save_menu_df.to_csv(csv_path, index=False)
         print('menu saved for', start_of_week)
-
-
-class Recipe:
-    def __init__(self):
-        pass
-
-    def add_to_my_recipes(self, df, user_name='master'):
-        for column in ['title', 'url', 'category', 'source',
-                       'calories', 'carbs', 'fat', 'protein',
-                       'rating', 'reviewCount']:
-            if (df[column] == '')[0]:
-                print('missing ' + column)
-                return 'missing'
-        else:
-            script_dir = os.path.dirname(__file__)
-            csv = os.path.join(script_dir, 'my_recipes.csv')
-            try:
-                tmp_df = pd.read_csv(csv)
-                tmp_df = pd.concat(objs=(tmp_df, df))
-                tmp_df = tmp_df.drop_duplicates()
-                tmp_df.to_csv(csv, index=False)
-            except:
-                df.to_csv(csv, index=False)
 
 
 def clean_up_recipes(df):
