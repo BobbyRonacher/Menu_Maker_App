@@ -87,7 +87,11 @@ def add_new_recipe():
 def block_menu_recipe(title, df):
     def block_recipe(title, df):
 
-        recipe_df = df[df['title'] == title].drop('index', axis=1)
+        try:
+            recipe_df = df[df['title'] == title].drop('index', axis=1)
+        except:
+            recipe_df = df[df['title'] == title]
+
         n.block_recipe(title, recipe_df)
         window2.destroy()
 

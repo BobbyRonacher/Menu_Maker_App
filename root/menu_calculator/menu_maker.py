@@ -1,17 +1,3 @@
-##Check if menu has balanced nutritional data, default to False ##DONE##
-##Check any keep designated recipes in a kept dictionary
-
-##Read recipes.csv ##DONE##
-###choose X random recipes. ##DONE##
-###Save as filtered dataframe ##DONE##
-
-##Read nutritional data from chosen recipes ##DONE##
-
-##Calculate total carbs, protein, fat, and calories ##DONE##
-###Calculate carb, protein, and ratios ##DONE##
-###Calculate if rations are balanced macronutrients ##DONE##
-
-##
 import pandas as pd
 import nutrition
 import random as rand
@@ -21,10 +7,8 @@ import os
 recipes_needed = 4
 
 
-def read_csv(user_name='master'):
+def get_all_recipes():
     # https://qr.ae/prwWFb
-    # recipe_df = pd.read_csv(
-    #     r"root/recipe_scraper/recipe_scraper/spiders/recipes.csv")
     script_dir = os.path.dirname(__file__)
     recipe_df_path = os.path.join(script_dir, '../recipe_scraper/recipe_scraper/spiders/recipes.csv')
     recipe_block_path = os.path.join(script_dir, '../recipe_scraper/recipe_scraper/spiders/master_blocked_recipes.csv')
@@ -56,7 +40,6 @@ def read_csv(user_name='master'):
 
     # return a df that is rows from recipe_df that aren't in block_df
     return unblock_recipe_df
-
 
 def select_recipes(titles, indexes):
     # with a list of titles and indexes, this creates a new list of the titles at those indexes
@@ -126,7 +109,7 @@ def get_menu_with_recipes(menu, df):
 def __main__(menu):
     # if menu is empty, make new menu.
     # is menu isn't empty, recalculate menu
-    df = read_csv()
+    df = get_all_recipes()
     if menu.empty:
         menu = make_menu(df)
     else:

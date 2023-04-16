@@ -20,7 +20,7 @@ def main():
               'url': entry_url.get()}
         df = pd.DataFrame(data=d, index=[0])
 
-        recipe = n.Recipe()
+        recipe = n.Recipe(recipe_df=df, calories=nutrition['calories'], carbs=nutrition['carbs'], protein=nutrition['protein'], fat=nutrition['fat'])
         submitted = recipe.add_to_my_recipes(df)
 
         if not submitted == 'missing':

@@ -70,7 +70,7 @@ class Menu(Recipe):
         self.balanced = (.45 <= self.carb_pct <= .65
                          and .25 <= self.fat_pct <= .35
                          and .1 <= self.protein_pct <= .3
-                         and 1000 <= self.calories <= 2000)
+                         and 1000 <= self.calories <= 3000)
 
     def save_menu(self):
         today = date.today()
