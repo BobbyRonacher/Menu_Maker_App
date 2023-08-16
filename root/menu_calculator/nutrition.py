@@ -38,6 +38,16 @@ class Menu(Recipe):
         self.fat_pct = 100
         self.recipes_df = []
         self.empty = False
+        self.is_vegetarian = False
+        self.is_vegan = False
+        self.calories_high = 3000
+        self.calories_low = 1000
+        self.carb_pct_high = .65
+        self.carb_pct_low = .45
+        self.fat_pct_high = .35
+        self.fat_pct_low = .25
+        self.protein_pct_high = .3
+        self.protein_pct_low = .1
         # self.recipes = self.recipes_df[self.recipes_df['title']]
         pass
 
@@ -46,6 +56,17 @@ class Menu(Recipe):
         self.carbs = 0
         self.fat = 0
         self.protein = 0
+
+    def reset_nutrition_targets(self):
+        # print('reset nutrition function called in class successfully')
+        self.calories_high = 3000
+        self.calories_low = 1000
+        self.carb_pct_high = .65
+        self.carb_pct_low = .45
+        self.fat_pct_high = .35
+        self.fat_pct_low = .25
+        self.protein_pct_high = .3
+        self.protein_pct_low = .1
 
     def aggregate_nutrition(self):
         self.calories = self.recipes_df['calories'].sum()
@@ -67,10 +88,11 @@ class Menu(Recipe):
             self.fat_pct = round((self.fat * 9) / self.calories, 2)
 
     def check_is_balanced_menu(self):
-        self.balanced = (.45 <= self.carb_pct <= .65
-                         and .25 <= self.fat_pct <= .35
-                         and .1 <= self.protein_pct <= .3
-                         and 1000 <= self.calories <= 3000)
+        self.balanced = (self.carb_pct_low <= self.carb_pct <= self.carb_pct_high
+                         and self.fat_pct_low <= self.fat_pct <= self.fat_pct_high
+                         and self.protein_pct_low <= self.protein_pct <= self.protein_pct_high
+                         and self.calories_low <= self.calories <= self.calories_high)
+
 
     def save_menu(self):
         today = date.today()
@@ -134,9 +156,11 @@ class Menu(Recipe):
 
 
 def clean_up_recipes(df):
-    blocked_words = ['dessert', 'cookie', 'muffin', 'cookie', 'pie', 'cake', 'bread', 'fish']
-    approved_categories = ['dinner', 'main-dish', 'main dish', 'lunch', 'main course', 'unknown']
-    blocked_df = df[df['title'].apply(lambda x: any([k in x.lower() for k in blocked_words]))]
+    # blocked_words = ['dessert', 'cookie', 'muffin', 'cookie', 'pie', 'cake', 'bread', 'fish']
+    approved_categories = ['dinner', 'main-dish', 'main dish', 'lunch', 'main course', 'supper', 'unknown']
+    blocked_categories = ['breakfast', 'brunch', 'cocktails', 'dessert', 'desserts', 'drink',
+                          'snack', 'starter', 'treat']
+    blocked_df = df[df['category'].apply(lambda x: any([k in x.lower() for k in blocked_categories]))]
     blocked_df_2 = df[df['category'].apply(lambda x: any([k in x.lower() for k in approved_categories])) == False]
 
     block_recipe('cleaning up blocked word recipes ', blocked_df)
