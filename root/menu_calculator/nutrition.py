@@ -170,7 +170,8 @@ def clean_up_recipes(df):
 def block_recipe(title, recipe: pd.DataFrame, user_name='master'):
     script_dir = os.path.dirname(__file__)
     # print(script_dir)
-    recipe_block_path = os.path.join(script_dir, '../recipe_scraper/recipe_scraper/spiders/master_blocked_recipes.csv')
+    recipe_block_path = os.path.join(script_dir,
+                                     '../recipe_scraper/recipe_scraper/spiders/master_blocked_recipes.csv')
 
     try:
         tmp_df = pd.read_csv(recipe_block_path)

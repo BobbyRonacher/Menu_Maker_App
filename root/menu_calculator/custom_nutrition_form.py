@@ -5,18 +5,47 @@ import pandas as pd
 
 
 def main(menu):
+    def validate_entry_ranges(menu_vars):
+        carb_inputs = (int(float(menu_vars[3])*100), int(float(menu_vars[2])*100))
+        fat_inputs = (int(float(menu_vars[5])*100), int(float(menu_vars[4])*100))
+        protein_inputs = (int(float(menu_vars[7])*100), int(float(menu_vars[6])*100))
+        carb_range = carb_inputs[1] - carb_inputs[0]
+        fat_range = fat_inputs[1] - fat_inputs[0]
+        protein_range = protein_inputs[1] - protein_inputs[0]
+
+        counter = 0
+        for num1 in range(carb_inputs[0], carb_inputs[1] + 1):
+            for num2 in range(fat_inputs[0], fat_inputs[1] + 1):
+                for num3 in range(protein_inputs[0], protein_inputs[1] + 1):
+                    if num1 + num2 + num3 == 100:
+                        counter += 1
+        pct_range_doable = counter/(carb_range+fat_range+protein_range)
+        if pct_range_doable == 0:
+            print('Error: Impossible to create a combination from range values')
+            print('Error: Selection not saved')
+            return False
+        elif pct_range_doable <= .2:
+            return False
+            print('Warning: only {}% of range can be used. Recommended >20%'.format(round(pct_range_doable*100, 0)))
+        else:
+            print('Range is good')
+            return True
+
     def submit(menu_vars, entries):
         for i in range(len(menu_vars)):
             menu_vars[i] = entries[i].get()
-        menu.calories_high = int(entries[0].get())
-        menu.calories_low = int(entries[1].get())
-        menu.carb_pct_high = float(entries[2].get())
-        menu.carb_pct_low = float(entries[3].get())
-        menu.fat_pct_high = float(entries[4].get())
-        menu.fat_pct_low = float(entries[5].get())
-        menu.protein_pct_high = float(entries[6].get())
-        menu.protein_pct_low = float(entries[7].get())
-
+        check = validate_entry_ranges(menu_vars)
+        if check:
+            menu.calories_high = int(entries[0].get())
+            menu.calories_low = int(entries[1].get())
+            menu.carb_pct_high = float(entries[2].get())
+            menu.carb_pct_low = float(entries[3].get())
+            menu.fat_pct_high = float(entries[4].get())
+            menu.fat_pct_low = float(entries[5].get())
+            menu.protein_pct_high = float(entries[6].get())
+            menu.protein_pct_low = float(entries[7].get())
+        else:
+            return
     def reset_nutrition_targets(menu_vars, entries):
         # print('reset nutrition function called in form successfully')
         menu.reset_nutrition_targets()
@@ -25,6 +54,8 @@ def main(menu):
         for i in range(len(entries)):
             entries[i].delete(0, END)
             entries[i].insert(0, menu_vars[i])
+
+
 
     add_window = tk.Tk()
     frame_add = tk.Frame(master=add_window, relief=tk.SUNKEN, borderwidth=3)
@@ -57,15 +88,14 @@ def main(menu):
 
     menu_vars = [menu.calories_high, menu.calories_low, menu.carb_pct_high, menu.carb_pct_low, menu.fat_pct_high,
                  menu.fat_pct_low, menu.protein_pct_high, menu.protein_pct_low, 4]
-    entries = [entry_calories_high, entry_calories_low, entry_carbs_low, entry_carbs_high, entry_fat_low,
-               entry_fat_high,
-               entry_protein_low, entry_protein_high, entry_num_recipes]
+    entries = [entry_calories_high, entry_calories_low, entry_carbs_high, entry_carbs_low, entry_fat_high,
+               entry_fat_low, entry_protein_high, entry_protein_low, entry_num_recipes]
 
     for i in range(len(entries)):
         entries[i].insert(0, menu_vars[i])
 
-    texts = [text_calories_high, text_calories_low, text_carbs_low, text_carbs_high, text_fat_low, text_fat_high,
-             text_protein_low, text_protein_high, text_num_recipes]
+    texts = [text_calories_high, text_calories_low, text_carbs_high, text_carbs_low, text_fat_high,
+             text_fat_low, text_protein_high, text_protein_low, text_num_recipes]
 
     for i in range(len(entries)):
         entries[i].grid(row=i, column=1, sticky='nsew')

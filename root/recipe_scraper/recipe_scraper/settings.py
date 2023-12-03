@@ -14,8 +14,8 @@ BOT_NAME = 'recipe_scraper'
 
 SPIDER_MODULES = ['recipe_scraper.spiders']
 NEWSPIDER_MODULE = 'recipe_scraper.spiders'
-CLOSESPIDER_PAGECOUNT=1000
-FEED_URI='recipes.csv'
+CLOSESPIDER_PAGECOUNT=10
+FEED_URI='recipes_2.csv'
 FEED_FORMAT='csv'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

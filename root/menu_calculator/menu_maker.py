@@ -11,7 +11,8 @@ def get_all_recipes():
     # https://qr.ae/prwWFb
     script_dir = os.path.dirname(__file__)
     recipe_df_path = os.path.join(script_dir, '../recipe_scraper/recipe_scraper/spiders/recipes.csv')
-    recipe_block_path = os.path.join(script_dir, '../recipe_scraper/recipe_scraper/spiders/master_blocked_recipes.csv')
+    recipe_block_path = os.path.join(script_dir,
+                                     '../recipe_scraper/recipe_scraper/spiders/master_blocked_recipes.csv')
     my_recipe_df_path = os.path.join(script_dir, 'my_recipes.csv')
 
     recipe_df = pd.read_csv(recipe_df_path)
