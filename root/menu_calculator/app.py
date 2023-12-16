@@ -216,6 +216,84 @@ def save_menu():
 def custom_nutrition():
     custom_nutrition_form.main(menu)
 
+def get_potential_options():
+
+    def cb_search(event):
+        sstr = search.get()
+        titlelist.delete(0, END)
+        # If filter removed show all data
+        if sstr == "":
+            print("sstr empty")
+            fill_listbox(df['title'])
+            return
+
+        filtered_data = list()
+        for item in df['title']:
+            if item.lower().find(sstr.lower()) >= 0:
+                filtered_data.append(item)
+        fill_listbox(filtered_data)
+
+    def fill_listbox(ld):
+        for item in ld:
+            titlelist.insert(END, item)
+
+    def go(event):
+        cs = titlelist.curselection()
+        title = titlelist.get(cs)
+        new_recipe_df = df[df['title'] == title]
+        new_recipe_df['num'] = 3
+        new_recipe_df = new_recipe_df.set_index('num')
+        menu.recipes_df.update(new_recipe_df)
+        keep_recipe(menu, 4)
+
+        button_recipe4_text.config(text=menu.recipes_df.iloc[3]['title'])
+        label_recipe_4_url.config(text=menu.recipes_df.iloc[3]['url'])
+
+        menu.reset_nutrition()
+        menu.aggregate_nutrition()
+        menu.calculate_nutrition_percentages()
+        menu.check_is_balanced_menu()
+
+        if not menu.balanced:
+            label_nutrition.config(bg='yellow')
+        else:
+            label_nutrition.config(bg='white')
+
+        calories, carbs, fat, protein = menu.calories, menu.carbs, menu.fat, menu.protein,
+        nutrition_text = f'calories: {calories}\ncarbs: {carbs}\nfat: {fat}\nprotein: {protein}'
+        label_nutrition.config(text=nutrition_text)
+
+        options_menu.destroy()
+
+    menu_options = menu_maker.get_potential_options(menu)
+
+
+    if not menu_opti
+        print('Failed. Need to have three kept recipes')
+    else:
+        menu_options.sort()
+        options_menu = tk.Tk()
+        options_menu.geometry("700x500")
+        options_menu_frame = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
+        options_menu_frame.pack()
+
+        scrollbar = Scrollbar(options_menu, orient='vertical')
+        scrollbar.pack(side=RIGHT, fill=Y)
+
+        titlelist = Listbox(options_menu, yscrollcommand=scrollbar.set)
+        for title in menu_options:
+            titlelist.insert(END, title)
+            titlelist.bind('<Double-1>', go)
+
+        search_str = StringVar()
+        search = Entry(master=options_menu, textvariable=search_str, width=10)
+        search.bind('<Return>', cb_search)
+
+        titlelist.pack(side=TOP, expand=True, fill=BOTH)
+        search.pack(side=BOTTOM, fill=X, ipady=5)
+        scrollbar.config(command=titlelist.yview)
+        options_menu.mainloop()
+
 window = tk.Tk()
 frame_main = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
 frame_main.pack()
@@ -427,6 +505,17 @@ button = tk.Button(
     fg="white",
     command=make_new_recipes
 )
+
+button_get_menu_options = tk.Button(
+    text="Get Menu Options",
+    master=frame_main,
+    width=25,
+    height=5,
+    bg="black",
+    fg="white",
+    command=lambda: get_potential_options()
+)
+
 button_save_menu = tk.Button(
     text="Save menu!",
     master=frame_main,
@@ -460,29 +549,30 @@ label_url_header.grid(row=0, column=4, columnspan=3, sticky='nesw')
 
 label_recipe1.grid(row=1, column=0, sticky='nsew')
 button_recipe1_text.grid(row=1, column=1, sticky='nsew')
-button_keep_recipe_1.grid(row=1, column=2)
-button_drop_recipe_1.grid(row=1, column=3)
+button_keep_recipe_1.grid(row=1, column=2, sticky='nsew')
+button_drop_recipe_1.grid(row=1, column=3, sticky='nsew')
 label_recipe_1_url.grid(row=1, column=4, columnspan=3, sticky='nsew')
 
 label_recipe2.grid(row=2, column=0, sticky='nsew')
 button_recipe2_text.grid(row=2, column=1, sticky='nsew')
-button_keep_recipe_2.grid(row=2, column=2)
-button_drop_recipe_2.grid(row=2, column=3)
+button_keep_recipe_2.grid(row=2, column=2, sticky='nsew')
+button_drop_recipe_2.grid(row=2, column=3, sticky='nsew')
 label_recipe_2_url.grid(row=2, column=4, columnspan=3, sticky='nsew')
 
 label_recipe3.grid(row=3, column=0, sticky='nsew')
 button_recipe3_text.grid(row=3, column=1, sticky='nsew')
-button_keep_recipe_3.grid(row=3, column=2)
-button_drop_recipe_3.grid(row=3, column=3)
+button_keep_recipe_3.grid(row=3, column=2, sticky='nsew')
+button_drop_recipe_3.grid(row=3, column=3, sticky='nsew')
 label_recipe_3_url.grid(row=3, column=4, columnspan=3, sticky='nsew')
 
 label_recipe4.grid(row=4, column=0, sticky='nsew')
 button_recipe4_text.grid(row=4, column=1, sticky='nsew')
-button_keep_recipe_4.grid(row=4, column=2)
-button_drop_recipe_4.grid(row=4, column=3)
+button_keep_recipe_4.grid(row=4, column=2, sticky='nsew')
+button_drop_recipe_4.grid(row=4, column=3, sticky='nsew')
 label_recipe_4_url.grid(row=4, column=4, columnspan=3, sticky='nsew')
 
-label_nutrition.grid(row=5, column=1, columnspan=3, sticky='nsew')
+label_nutrition.grid(row=5, column=1, columnspan=1, sticky='nsew')
+button_get_menu_options.grid(row=5, column=2, columnspan=2, sticky='nsew')
 button_save_menu.grid(row=5, column=4, sticky='nsew')
 button_add_recipe.grid(row=5, column=5, sticky='nsew')
 button_custom_nutrition.grid(row=5, column=6, sticky='nsew')

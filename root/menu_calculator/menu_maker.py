@@ -2,6 +2,7 @@ import pandas as pd
 import nutrition
 import random as rand
 import os
+import copy
 
 # num_recipes = 0
 recipes_needed = 4
@@ -106,6 +107,57 @@ def get_menu_with_recipes(menu, df):
     print(f'menu created in {counter} attempts')
     return menu
 
+def get_potential_options(menu):
+
+    ##Create a list of menus where all kept recipes are included, and every other combination of other recipes if included.
+    ##Exclude any menu that fails is_balanced_menu.
+    try:
+        # Set the keep df based on kept menu items
+        keep_df = menu.recipes_df[menu.recipes_df['keep'] == True]
+    except:
+        keep_df = []
+
+    df = get_all_recipes()
+    titles = df['title']
+    option_list = []
+
+    if len(keep_df) == 3:
+        for i in range(len(df) - len(keep_df) + 1):
+            option_list.append(select_recipes(titles, [i])[0])
+    else:
+        return False
+
+    return_list = []
+    for option in option_list:
+
+        temp_menu = copy.copy(menu)
+
+        new_df = df[df['title'].isin([option])].copy()
+        new_df.loc[:, 'keep'] = False
+
+        temp_menu.recipes_df = pd.concat([keep_df, new_df])
+
+        temp_menu.reset_nutrition()
+        temp_menu.aggregate_nutrition()
+        temp_menu.calculate_nutrition_percentages()
+        temp_menu.check_is_balanced_menu()
+
+        if temp_menu.balanced:
+            return_list.append(option)
+        else:
+            pass
+
+    print(option_list)
+    print('Option List Generated Successfully')
+
+    # print('option_list menu_maker', len(option_list))
+    return return_list
+
+
+
+
+
+
 
 def __main__(menu):
     # if menu is empty, make new menu.
@@ -113,6 +165,8 @@ def __main__(menu):
     df = get_all_recipes()
     if menu.empty:
         menu = make_menu(df)
+    elif len(menu.recipes_df[menu.recipes_df['keep'] == True]) == 4:
+        print('No need to press that. Menu is full')
     else:
         update_menu(menu, df)
         # print('updated menu df')

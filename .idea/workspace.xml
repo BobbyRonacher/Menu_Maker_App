@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="Adding option to let user set custom nutrition targets">
-      <change afterPath="$PROJECT_DIR$/root/menu_calculator/see_saved_menus_2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/spiders/master_blocked_recipes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Menu_Maker_App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Menu_Maker_App.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="Coordinating local version with git">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/custom_nutrition_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/custom_nutrition_form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root/menu_calculator/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/nutrition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/see_saved_menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/see_saved_menus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/tkinter_Test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/spiders/recipes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/root/recipe_scraper/recipe_scraper/spiders/recipes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692144236342</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Coordinating local version with git">
+      <created>1701569105716</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701569105716</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -204,6 +201,7 @@
     <MESSAGE value="csv to track personal recipes" />
     <MESSAGE value="Adding functionality for user to add their own recipes" />
     <MESSAGE value="Adding option to let user set custom nutrition targets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding option to let user set custom nutrition targets" />
+    <MESSAGE value="Coordinating local version with git" />
+    <option name="LAST_COMMIT_MESSAGE" value="Coordinating local version with git" />
   </component>
 </project>
