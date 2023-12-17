@@ -268,7 +268,7 @@ def get_potential_options():
     menu_options = menu_maker.get_potential_options(menu)
 
 
-    if not menu_opti
+    if not menu_options:
         print('Failed. Need to have three kept recipes')
     else:
         menu_options.sort()

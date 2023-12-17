@@ -7,7 +7,6 @@
     <list default="true" id="64b790b8-3784-40c2-97b0-efed7514625e" name="Default Changelist" comment="Coordinating local version with git">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root/menu_calculator/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/root/menu_calculator/menu_maker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
